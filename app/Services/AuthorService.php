@@ -19,6 +19,18 @@ class AuthorService
         $this->baseUri = config('services.authors.base_uri');
     }
 
+    /**
+     * Obtain full list of Authors from the AuthorsMicroservice
+     * @return string
+     */
+    public function obtainAuthors()
+    {
+        return $this->performRequest(
+            'GET',
+            'authors-api/v1/all'
+        );
+    }
+
 }
 
 ?>
