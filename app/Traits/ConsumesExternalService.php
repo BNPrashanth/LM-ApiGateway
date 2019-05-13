@@ -17,7 +17,7 @@ trait ConsumesExternalService
         ]);
 
         $response = $client->request($method, $requestUri, [
-            'form_param' => $formParams,
+            'form_params' => $formParams,
             'headers' => $headers
         ]);
 

@@ -31,6 +31,19 @@ class AuthorService
         );
     }
 
+    /**
+     * Create a new Author from the AuthorsMicroservice
+     * @return string
+     */
+    public function createAuthor($data)
+    {
+        return $this->performRequest(
+            'POST',
+            'authors-api/v1/add',
+            $data
+        );
+    }
+
 }
 
 ?>
