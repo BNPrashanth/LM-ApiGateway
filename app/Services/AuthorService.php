@@ -44,6 +44,43 @@ class AuthorService
         );
     }
 
+    /**
+     * Obtain an existing instance of an Author from the AuthorsMicroservice
+     * @return string
+     */
+    public function obtainAuthor($author)
+    {
+        return $this->performRequest(
+            'GET',
+            "authors-api/v1/get/{$author}"
+        );
+    }
+
+    /**
+     * Update an existing instance of an Author from the AuthorsMicroservice
+     * @return string
+     */
+    public function editAuthor($data, $author)
+    {
+        return $this->performRequest(
+            'PUT',
+            "authors-api/v1/update/{$author}",
+            $data
+        );
+    }
+
+    /**
+     * Remove an existing instance of an Author from the AuthorsMicroservice
+     * @return string
+     */
+    public function deleteAuthor($author)
+    {
+        return $this->performRequest(
+            'DELETE',
+            "authors-api/v1/delete/{$author}"
+        );
+    }
+
 }
 
 ?>
