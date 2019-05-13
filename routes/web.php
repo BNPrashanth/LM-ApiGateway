@@ -11,20 +11,24 @@
 |
 */
 
-$router->group(['prefix' => 'authors-api/v1'], function ($router) {
-    $router->get('/all', 'AuthorController@index');
-    $router->post('/add', 'AuthorController@store');
-    $router->get('/get/{author}', 'AuthorController@show');
-    $router->put('/update/{author}', 'AuthorController@update');
-    $router->patch('/update/{author}', 'AuthorController@update');
-    $router->delete('/delete/{author}', 'AuthorController@destroy');
-});
+$router->group(['middleware' => 'client.credentials'], function () use ($router) {
 
-$router->group(['prefix' => 'books-api/v1'], function ($router) {
-    $router->get('/all', 'BookController@index');
-    $router->post('/add', 'BookController@store');
-    $router->get('/get/{book}', 'BookController@show');
-    $router->put('/update/{book}', 'BookController@update');
-    $router->patch('/update/{book}', 'BookController@update');
-    $router->delete('/delete/{book}', 'BookController@destroy');
+    $router->group(['prefix' => 'authors-api/v1'], function ($router) {
+        $router->get('/all', 'AuthorController@index');
+        $router->post('/add', 'AuthorController@store');
+        $router->get('/get/{author}', 'AuthorController@show');
+        $router->put('/update/{author}', 'AuthorController@update');
+        $router->patch('/update/{author}', 'AuthorController@update');
+        $router->delete('/delete/{author}', 'AuthorController@destroy');
+    });
+
+    $router->group(['prefix' => 'books-api/v1'], function ($router) {
+        $router->get('/all', 'BookController@index');
+        $router->post('/add', 'BookController@store');
+        $router->get('/get/{book}', 'BookController@show');
+        $router->put('/update/{book}', 'BookController@update');
+        $router->patch('/update/{book}', 'BookController@update');
+        $router->delete('/delete/{book}', 'BookController@destroy');
+    });
+
 });
