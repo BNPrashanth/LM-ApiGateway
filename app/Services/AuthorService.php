@@ -12,11 +12,11 @@ class AuthorService
      * The base uri to consume the authors service
      * @var string
      */
-    public $base_uri;
+    public $baseUri;
 
     public function __construct()
     {
-        $this->base_uri = config('services.authors.base_uri');
+        $this->baseUri = config('services.authors.base_uri');
     }
 
 }
