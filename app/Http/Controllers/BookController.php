@@ -5,19 +5,26 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Traits\ApiResponser;
+use App\Services\BookService;
 
 class BookController extends Controller
 {
     use ApiResponser;
 
     /**
+     * The service to consume the books microservice
+     * @var BookService
+     */
+    public $bookService;
+
+    /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(BookService $bookService)
     {
-        //
+        $this->bookService = $bookService;
     }
 
     /**
